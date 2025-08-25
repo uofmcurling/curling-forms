@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sign in with Google Demo</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner-wrapper">
+        <img src="Banner.jpg" alt="banner" id="banner" />
+        <img id="logo" src="logo-modified.png" />
+      </div>
+      <div class="form">
+        <h1 id="main_heading">Sign up to our Mailing List</h1>
+        <div class="main_content">
+          <label name="email" id="q1" for="email"
+            >Enter your university email:</label
+          >
+          <input type="text" id="email" name="email" />
+          <p id="or">--or--</p>
+          <!-- Google Sign-In button -->
+          <div
+            id="g_id_onload"
+            data-client_id="201937522786-1n37esn2hdiabkgu576kjis4v19mp9sn.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false"
+          ></div>
+
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+          ></div>
+
+          <p id="user-info"></p>
+        </div>
+        <button id="submission" onclick="add_to_list()">Submit</button>
+        <script src="index.js"></script>
+        <script src="mailing_list.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Client id:
+
+201937522786-1n37esn2hdiabkgu576kjis4v19mp9sn.apps.googleusercontent.com
+
+-->

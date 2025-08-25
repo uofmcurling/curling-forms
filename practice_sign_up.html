@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UMN Curling Club | Sign-up</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="icon" type="image/png" href="favicon.ico" sizes="32x32" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="banner-wrapper">
+        <img src="Banner.jpg" alt="banner" id="banner" />
+        <img id="logo" src="logo-modified.png" />
+      </div>
+      <div class="form" id="sign-in">
+        <h1 id="main_heading">Practice Sign-up</h1>
+        <div class="main_content">
+          <label name="email" id="q1" for="email"
+            >Enter your university email:</label
+          >
+          <input type="text" id="email" name="email" />
+          <p id="or">--or--</p>
+          <!-- Google Sign-In button -->
+          <div
+            id="g_id_onload"
+            data-client_id="201937522786-1n37esn2hdiabkgu576kjis4v19mp9sn.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false"
+          ></div>
+
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="sign_in_with"
+            data-shape="rectangular"
+            data-logo_alignment="left"
+          ></div>
+
+          <p id="user-info"></p>
+        </div>
+        <button id="submission" onclick="email_lookup()">Continue</button>
+        <script src="index.js"></script>
+      </div>
+    </div>
+      <div class="form" id="main" style="display: none">
+        <h1 id="main_heading">U of M Curling Sign-Up</h1>
+        <div class="main_content">
+          <label name="email" id="q1" for="email"
+            >Enter your university email:</label
+          >
+          <input type="text" id="email" name="email" />
+          <label for="name">What is your name?:</label>
+          <input type="text" id="name" name="name" />
+
+          <label for="experience">What is your experience level?:</label>
+          <select id="experience">
+            <option value="" selected disabled hidden></option>
+            <option value="Completely new">Completely new</option>
+            <option value="Less than a year">Less than a year</option>
+            <option value="1 year">1 year</option>
+            <option value="2 years">2 years</option>
+            <option value="3 years">3 years</option>
+            <option value="4 years">4 years</option>
+            <option value="5 years">5 years</option>
+            <option value="6+ years">6+ years</option>
+          </select>
+          <label for="number">What is your phone number?:</label>
+          <input type="text" id="number" name="number" />
+          <label for="carpool">What is your transportation situation?:</label>
+          <select id="transport">
+            <option value="" selected disabled hidden></option>
+            <option value="I need a ride">I need a ride</option>
+            <option value="I can give rides">I can give rides</option>
+            <option value="I will drive myself">I will drive myself</option>
+          </select>
+        </div>
+        <button id="submission" onclick="process()">Submit</button>
+        <script src="index.js"></script>
+      </div>
+    </div>
+  </body>
+</html>
