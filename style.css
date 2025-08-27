@@ -55,7 +55,7 @@ h1#main_heading {
     color: #7A0019; /* UMN Maroon */
 }
 
-.main_content {
+#main_content {
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -101,4 +101,17 @@ button {
 button:hover {
     background-color: #9B0034;
     transform: translateY(-2px);
+}
+#confirmation {
+        background-color: #d4edda;
+    color: #155724;
+    padding: 15px 20px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    width: fit-content;
+    margin: 0 auto;
+    min-width: 200px;
+    text-align: center;
 }

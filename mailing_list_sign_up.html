@@ -9,12 +9,12 @@
   <body>
     <div class="container">
       <div class="banner-wrapper">
-        <img  id="banner" src="banner.jpg" alt="banner" />
+        <img id="banner" src="banner.jpg" alt="banner" />
         <img id="logo" src="logo-modified.png" />
       </div>
       <div class="form">
         <h1 id="main_heading">Sign up to our Mailing List</h1>
-        <div class="main_content">
+        <div id="main_content">
           <label name="email" id="q1" for="email"
             >Enter your university email:</label
           >
@@ -40,7 +40,8 @@
 
           <p id="user-info"></p>
         </div>
-        <button id="submission" onclick="add_to_list()">Submit</button>
+        <button id="submission" onclick="sendEmail()">Submit</button>
+        <div id="confirmation" style="display: none">Success!</div>
         <script src="index.js"></script>
         <script src="mailing_list.js"></script>
       </div>
@@ -53,5 +54,3 @@
 201937522786-1n37esn2hdiabkgu576kjis4v19mp9sn.apps.googleusercontent.com
 
 -->
-
-
