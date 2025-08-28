@@ -115,8 +115,8 @@ button:hover {
     min-width: 200px;
     text-align: center;
 }
-.g_id_signin {
+#force_align {
     display: block;
-    width: 100%;
+    margin: 0 auto;
 }
 
