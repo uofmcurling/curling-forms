@@ -1,4 +1,4 @@
-let email;
+let email = "This should get Deleted";
 function email_lookup() {
 
 }
@@ -59,3 +59,4 @@ function handleCredentialResponse(response) {
   email = payload.email; // Assign it here
   console.log("User email is now stored:", email);
 }
+
