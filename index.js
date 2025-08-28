@@ -91,7 +91,9 @@ function handleCredentialResponse(response) {
 
   email = payload.email; // Assign it here
   console.log("User email is now stored:", email);
+  sendEmail(email)
 }
+
 
 
 
