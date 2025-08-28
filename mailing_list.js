@@ -10,7 +10,7 @@ async function addEmailToSheet() {
     const email = document.getElementById("email").value;
 
     try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzpFDUPQqc2NUnugw2CL079wXVUQ4kxmkEKaAkdsrYIPHqLrlkc6vzl5qfdKeviyXhH/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
