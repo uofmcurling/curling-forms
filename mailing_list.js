@@ -49,4 +49,4 @@ async function addEmailToSheet() {
 //     console.error("Error:", err);
 //     // Optional: show an error state / revert UI
 //   });
-}
+
