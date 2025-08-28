@@ -11,7 +11,7 @@ function sendEmail() {
     body: formData
   })
   .then(response => response.text())
-  .then(data => {response=data;console.log(data);})
+  .then(data => {const response=data;console.log(data);})
   .catch(err => console.error(err));
   if (response === "success") {
   document.getElementById("main_content").style.display = "none";
@@ -65,6 +65,7 @@ async function addEmailToSheet() {
 //     console.error("Error:", err);
 //     // Optional: show an error state / revert UI
 //   });
+
 
 
 
