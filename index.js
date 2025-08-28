@@ -1,3 +1,4 @@
+let email;
 function email_lookup() {
 
 }
@@ -52,22 +53,9 @@ function process() {
 }
 
 function handleCredentialResponse(response) {
-  console.log("Encoded JWT ID token: " + response.credential);
-  // Normally you would send response.credential to your backend
-  // to verify the token and get user info.
-  // For demo: decode JWT client-side (not secure for production)
-  const base64Url = response.credential.split(".")[1];
-  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-  const jsonPayload = decodeURIComponent(
-    atob(base64)
-      .split("")
-      .map(function (c) {
-        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-      })
-      .join("")
-  );
-  const userData = JSON.parse(jsonPayload);
-  document.getElementById(
-    "user-info"
-  ).innerText = `Hello, ${userData.name} (${userData.email})`;
+  const token = response.credential;
+  const payload = JSON.parse(atob(token.split('.')[1]));
+
+  email = payload.email; // Assign it here
+  console.log("User email is now stored:", email);
 }
