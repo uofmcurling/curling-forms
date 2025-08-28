@@ -23,10 +23,14 @@ function add_to_list() {
         console.error("Error:", error);
     });
 }
-async function sendEmail() {
+function on_button_click() {
+    email = document.getElementById("email").value;
+    sendEmail(email)
+}
+async function sendEmail(email) {
   const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
-  const email = document.getElementById("email").value;
+  // const email = document.getElementById("email").value;
 
   const formData = new URLSearchParams();
   formData.append('email', email);
@@ -88,5 +92,6 @@ function handleCredentialResponse(response) {
   email = payload.email; // Assign it here
   console.log("User email is now stored:", email);
 }
+
 
 
