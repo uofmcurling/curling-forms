@@ -1,10 +1,18 @@
 function sendEmail() {
-  // UI
-  document.getElementById("main_content").style.display = "none";
-  document.getElementById("submission").style.display = "none";
-  document.getElementById("confirmation").style.display = "block";
+  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
+  
+  const email = document.getElementById("email").value;
 
-  addEmailToSheet()
+  const formData = new URLSearchParams();
+  formData.append('email', email);
+
+  fetch(url, {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
 }
 async function addEmailToSheet() {
     const email = document.getElementById("email").value;
@@ -49,4 +57,5 @@ async function addEmailToSheet() {
 //     console.error("Error:", err);
 //     // Optional: show an error state / revert UI
 //   });
+
 
