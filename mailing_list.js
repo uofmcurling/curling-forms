@@ -11,11 +11,16 @@ function sendEmail() {
     body: formData
   })
   .then(response => response.text())
-  .then(data => console.log(data))
+  .then(data => {response=data;console.log(data);})
   .catch(err => console.error(err));
+  if (response === "success") {
   document.getElementById("main_content").style.display = "none";
   document.getElementById("submission").style.display = "none";
   document.getElementById("confirmation").style.display = "block";
+}
+  else {
+    console.log("Something went wrong")
+  }
 }
 async function addEmailToSheet() {
     const email = document.getElementById("email").value;
@@ -60,6 +65,7 @@ async function addEmailToSheet() {
 //     console.error("Error:", err);
 //     // Optional: show an error state / revert UI
 //   });
+
 
 
 
