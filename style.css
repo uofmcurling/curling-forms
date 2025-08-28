@@ -118,5 +118,7 @@ button:hover {
 #force_align {
     display: block;
     margin: 0 auto;
+    border-color: black;
 }
+
 
