@@ -4,8 +4,8 @@ function sendEmail() {
   document.getElementById("submission").style.display = "none";
   document.getElementById("confirmation").style.display = "block";
 
-  const member_email = document.getElementById('email').value;
-
+  addEmailToSheet()
+}
 async function addEmailToSheet() {
     const email = document.getElementById("email").value;
 
