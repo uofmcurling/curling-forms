@@ -28,6 +28,7 @@ function on_button_click() {
     sendEmail(email)
 }
 async function sendEmail(email) {
+    console.log("Working...");
   const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
   // const email = document.getElementById("email").value;
@@ -91,8 +92,9 @@ function handleCredentialResponse(response) {
 
   email = payload.email; // Assign it here
   console.log("User email is now stored:", email);
-  sendEmail(email)
+  sendEmail(email);
 }
+
 
 
 
