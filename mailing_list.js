@@ -1,33 +1,4 @@
-async function sendEmail() {
-  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
-  const email = document.getElementById("email").value;
-
-  const formData = new URLSearchParams();
-  formData.append('email', email);
-
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.text(); // or .json() if your server returns JSON
-    console.log("Server response:", data);
-
-    // Now you can use 'data' as needed
-    if (data === "success") {
-      document.getElementById("main_content").style.display = "none";
-      document.getElementById("submission").style.display = "none";
-      document.getElementById("confirmation").style.display = "block";
-    } else {
-      console.log("Something went wrong");
-    }
-
-  } catch (err) {
-    console.error("Fetch error:", err);
-  }
-}
 
 async function addEmailToSheet() {
     const email = document.getElementById("email").value;
@@ -72,6 +43,7 @@ async function addEmailToSheet() {
 //     console.error("Error:", err);
 //     // Optional: show an error state / revert UI
 //   });
+
 
 
 
