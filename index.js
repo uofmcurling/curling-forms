@@ -49,7 +49,7 @@ async function sendEmail(email) {
 
     // Now you can use 'data' as needed
     if (data === "success") {
-      document.getElementById("confirmation").style.display = "block";
+      document.getElementById("confirmation").style.display = "block";}
     if (data === "success") {
         alert("email already exists");
     } else {
@@ -96,6 +96,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
