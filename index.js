@@ -55,7 +55,6 @@ async function sendEmail(email) {
   }
 }
 
-
 function process() {
     const member_name = document.getElementById('name').value;
     const member_email = document.getElementById('email').value;
@@ -91,6 +90,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
