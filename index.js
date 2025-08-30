@@ -24,6 +24,8 @@ function add_to_list() {
     });
 }
 function on_button_click() {
+    document.getElementById("main_content").style.display = "none";
+    document.getElementById("submission").style.display = "none";
     email = document.getElementById("email").value;
     sendEmail(email)
 }
@@ -47,11 +49,11 @@ async function sendEmail(email) {
 
     // Now you can use 'data' as needed
     if (data === "success") {
-      document.getElementById("main_content").style.display = "none";
-      document.getElementById("submission").style.display = "none";
       document.getElementById("confirmation").style.display = "block";
+    if (data === "success") {
+        alert("email already exists");
     } else {
-      console.log("Something went wrong");
+      alert("Something went wrong");
     }
 
   } catch (err) {
@@ -94,6 +96,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
