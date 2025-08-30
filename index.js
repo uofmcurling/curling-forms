@@ -1,28 +1,28 @@
 let email = "This should get Deleted";
-function email_lookup() {
+// function email_lookup() {
 
-}
-function add_to_list() {
-    const member_email = document.getElementById('email').value;
-    console.log(member_email)
-    fetch("https://script.google.com/macros/s/AKfycbwETn3gPI6zMEerLR68GJht_rSBvH9-CGevTKsKqWFgb2rDfM4JjsTYufMAEVXTNpBC/exec", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            action: "add_to_list",
-            email: member_email
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Result:", data);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
-}
+// }
+// function add_to_list() {
+//     const member_email = document.getElementById('email').value;
+//     console.log(member_email)
+//     fetch("https://script.google.com/macros/s/AKfycbwETn3gPI6zMEerLR68GJht_rSBvH9-CGevTKsKqWFgb2rDfM4JjsTYufMAEVXTNpBC/exec", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({
+//             action: "add_to_list",
+//             email: member_email
+//         })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log("Result:", data);
+//     })
+//     .catch(error => {
+//         console.error("Error:", error);
+//     });
+// }
 function on_button_click() {
     email = document.getElementById("email").value;
     sendEmail(email)
@@ -96,6 +96,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
