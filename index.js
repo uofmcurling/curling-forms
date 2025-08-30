@@ -48,13 +48,14 @@ async function sendEmail(email) {
     console.log("Server response:", data);
 
     // Now you can use 'data' as needed
-    if (data === "success") {
-      document.getElementById("confirmation").style.display = "block";}
-    if (data === "success") {
-        alert("email already exists");
-    } else {
-      alert("Something went wrong");
-    }
+if (data === "success") {
+  document.getElementById("confirmation").style.display = "block";
+  alert("Email already exists");
+} else if (data === "this email exists") {
+  alert("This email is already registered");
+} else {
+  alert("Something went wrong");
+}
 
   } catch (err) {
     console.error("Fetch error:", err);
@@ -96,6 +97,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
