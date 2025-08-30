@@ -56,9 +56,6 @@ if (data === "success") {
 } else {
   alert("Something went wrong");
 }
-
-  } catch (err) {
-    console.error("Fetch error:", err);
   }
 }
 
@@ -97,6 +94,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
