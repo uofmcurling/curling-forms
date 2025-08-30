@@ -25,7 +25,7 @@ let email = "This should get Deleted";
 // }
 function on_button_click() {
     email = document.getElementById("email").value;
-    sendEmail(email)
+    sendEmail(email);
 }
 async function sendEmail(email) {
     console.log("Processing....");
@@ -96,6 +96,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
