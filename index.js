@@ -28,36 +28,33 @@ function on_button_click() {
     sendEmail(email);
 }
 async function sendEmail(email) {
-    console.log("Processing....");
-    document.getElementById("main_content").style.display = "none";
-    document.getElementById("submission").style.display = "none";
-  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
-
-  // const email = document.getElementById("email").value;
+  console.log("Processing....");
+  document.getElementById("main_content").style.display = "none";
+  document.getElementById("submission").style.display = "none";
+  const url = "...";
 
   const formData = new URLSearchParams();
   formData.append('email', email);
 
   try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await response.text(); // or .json() if your server returns JSON
+    const response = await fetch(url, { method: "POST", body: formData });
+    const data = await response.text();
     console.log("Server response:", data);
 
-    // Now you can use 'data' as needed
-if (data === "success") {
-  document.getElementById("confirmation").style.display = "block";
-  alert("Email already exists");
-} else if (data === "this email exists") {
-  alert("This email is already registered");
-} else {
-  alert("Something went wrong");
-}
+    if (data === "success") {
+      document.getElementById("confirmation").style.display = "block";
+      alert("Email already exists");
+    } else if (data === "this email exists") {
+      alert("This email is already registered");
+    } else {
+      alert("Something went wrong");
+    }
+  } catch (err) {
+    console.error("Fetch error:", err);
+    alert("Network error. Please try again.");
   }
 }
+
 
 function process() {
     const member_name = document.getElementById('name').value;
@@ -94,6 +91,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
