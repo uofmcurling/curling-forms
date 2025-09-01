@@ -31,7 +31,7 @@ async function sendEmail(email) {
   console.log("Processing....");
   document.getElementById("main_content").style.display = "none";
   document.getElementById("submission").style.display = "none";
-  const url = "...";
+  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
   const formData = new URLSearchParams();
   formData.append('email', email);
@@ -90,6 +90,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
