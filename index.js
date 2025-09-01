@@ -70,7 +70,7 @@ async function checkEmail(email) {
   formData.append('action', 'request_info');
   try {
     const response = await fetch(url, { method: "POST", body: formData });
-    const data = await response.text();
+    const data = await JSON.parse(response.text());
     console.log("Server response:", data);
 
     if (data === "success") {
