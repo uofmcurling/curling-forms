@@ -35,7 +35,7 @@ async function sendEmail(email) {
 
   const formData = new URLSearchParams();
   formData.append('email', email);
-  formData.append('action', 'send_email');
+  formData.append('action', 'send_emails');
 
   try {
     const response = await fetch(url, { method: "POST", body: formData });
