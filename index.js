@@ -57,7 +57,7 @@ async function sendEmail(email) {
 
 function on_continue() {
     email = document.getElementById("email").value;
-    checkEmail(email);
+    sendEmail(email);
 }
 async function checkEmail(email) {
   console.log("Processing....");
