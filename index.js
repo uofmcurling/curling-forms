@@ -55,6 +55,38 @@ async function sendEmail(email) {
   }
 }
 
+function on_continue() {
+    email = document.getElementById("email").value;
+    checkEmail(email);
+}
+async function checkEmail(email) {
+  console.log("Processing....");
+  document.getElementById("main_content").style.display = "none";
+  document.getElementById("submission").style.display = "none";
+  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
+
+  const formData = new URLSearchParams();
+  formData.append('email', email);
+  formData.append('action', 'send_email');
+  try {
+    const response = await fetch(url, { method: "POST", body: formData });
+    const data = await response.text();
+    console.log("Server response:", data);
+
+    if (data === "success") {
+      document.getElementById("confirmation").style.display = "block";
+    } else if (data === "email already exists") {
+        document.getElementById("confirmation").style.display = "block";
+        alert("This email is already registered");
+    } else {
+      alert("Something went wrong");
+    }
+  } catch (err) {
+    console.error("Fetch error:", err);
+    alert("Network error. Please try again.");
+  }
+}
+
 function process() {
     const member_name = document.getElementById('name').value;
     const member_email = document.getElementById('email').value;
