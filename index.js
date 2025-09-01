@@ -41,7 +41,7 @@ async function sendEmail(email) {
     const data = await response.text();
     console.log("Server response:", data);
 
-    if (data === "success") {
+    if (data === "success" or data === "email already exists") {
       document.getElementById("confirmation").style.display = "block";
       alert("Email already exists");
     } else if (data === "this email exists") {
@@ -90,6 +90,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
