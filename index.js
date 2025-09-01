@@ -67,14 +67,14 @@ async function checkEmail(email) {
 
   const formData = new URLSearchParams();
   formData.append('email', email);
-  formData.append('action', 'send_email');
+  formData.append('action', 'request_info');
   try {
     const response = await fetch(url, { method: "POST", body: formData });
     const data = await response.text();
     console.log("Server response:", data);
 
     if (data === "success") {
-      document.getElementById("confirmation").style.display = "block";
+      {}
     } else if (data === "email already exists") {
         document.getElementById("confirmation").style.display = "block";
         alert("This email is already registered");
