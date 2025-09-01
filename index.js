@@ -41,11 +41,11 @@ async function sendEmail(email) {
     const data = await response.text();
     console.log("Server response:", data);
 
-    if (data === "success" or data === "email already exists") {
+    if (data === "success") {
       document.getElementById("confirmation").style.display = "block";
-      alert("Email already exists");
-    } else if (data === "this email exists") {
-      alert("This email is already registered");
+    } else if (data === "email already exists") {
+        document.getElementById("confirmation").style.display = "block";
+        alert("This email is already registered");
     } else {
       alert("Something went wrong");
     }
@@ -90,6 +90,7 @@ function handleCredentialResponse(response) {
   console.log("User email is now stored:", email);
   sendEmail(email);
 }
+
 
 
 
