@@ -14,23 +14,23 @@
         <img id="banner" src="banner.jpg" alt="banner" />
         <img id="logo" src="logo-modified.png" />
       </div>
-      <div class="form" id="sign-in">
+      <div class="form" id="sign-in" style="display: block;">
         <h1 class="main_heading">Practice Sign-up</h1>
         <div class="main_content" id="main_content">
           <label name="email" id="q1" for="email"
             >Enter your university email:</label
           >
           <input type="text" id="email" name="email" />
-          <p id="or">--or--</p>
+          <!-- <p id="or">--or--</p> -->
           <!-- Google Sign-In button -->
           <div
             id="g_id_onload"
             data-client_id="201937522786-1n37esn2hdiabkgu576kjis4v19mp9sn.apps.googleusercontent.com"
-            data-callback="handleCredentialResponse"
+            data-callback="handleExistingCredential"
             data-auto_prompt="false"
           ></div>
 
-          <div
+          <!-- <div
             class="g_id_signin"
             data-type="standard"
             data-size="large"
@@ -38,24 +38,19 @@
             data-text="sign_in_with"
             data-shape="rectangular"
             data-logo_alignment="left"
-          ></div>
+          ></div> -->
 
           <p id="user-info"></p>
         </div>
         <button id="submission" onclick="on_continue()">Continue</button>
-        <script src="index.js"></script>
-      </div>
-    </div>
-      <div class="form" id="main" style="display: none">
+              </div>
+      <div class="form" id="about_you" style="display: none">
         <h1 class="main_heading">About You</h1>
         <div class="main_content">
-          <label name="email" id="q1" for="email"
-            >Enter your university email:</label
-          >
-          <input type="text" id="email" name="email" />
-          <label for="name">What is your name?:</label>
-          <input type="text" id="name" name="name" />
-
+          <label for="name">What is your first name?:</label>
+          <input type="text" id="first_name" name="first_name" />
+          <label for="name">What is your last name?:</label>
+          <input type="text" id="last_name" name="last_name" />
           <label for="experience">What is your experience level?:</label>
           <select id="experience">
             <option value="" selected disabled hidden></option>
@@ -70,16 +65,31 @@
           </select>
           <label for="number">What is your phone number?:</label>
           <input type="text" id="number" name="number" />
+          <label for="number">What is your planned graduation year?(xxxx):</label>
+          <input type="text" id="graduation" name="graduation" />
+        </div>
+        <button id="submission" onclick="process()">Submit</button>
+      </div>
+      <div class="form" id="signUp" style="display: none;">
+        <h1 class="main_heading">Practice Sign-up</h1>
+        <div class="main_content">
           <label for="carpool">What is your transportation situation?:</label>
-          <select id="transport">
+          <select id="transport" style="display: block;">
             <option value="" selected disabled hidden></option>
             <option value="I need a ride">I need a ride</option>
             <option value="I can give rides">I can give rides</option>
             <option value="I will drive myself">I will drive myself</option>
           </select>
         </div>
-        <button id="submission" onclick="process()">Submit</button>
-        <script src="index.js"></script>
+        <button id="sign up" onclick="signUp()">Sign Up</button>
+      </div>
+      <div class="form" id="loading" style="display: none;">
+        <p style="text-align: center;">Working...</p>
+      </div>
+      <div class="form" id="confirmation_box">
+        <div id="confirmation" style="display: none">Success!</div>
+          <script src="index.js"></script>
+        </div>
       </div>
     </div>
   </body>
