@@ -121,6 +121,28 @@
         </div>
       </div>
     </div>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Populate the practice select box
+  populatePracticeSelect();
+
+  // Attach button listeners
+  const continueBtn = document.getElementById("continueBtn");
+  if (continueBtn) continueBtn.addEventListener("click", on_continue);
+
+  const submitBtn = document.getElementById("submitBtn");
+  if (submitBtn) submitBtn.addEventListener("click", process);
+
+  const signUpBtn = document.getElementById("signUpBtn");
+  if (signUpBtn) signUpBtn.addEventListener("click", signUp);
+
+  const emailBtn = document.getElementById("emailBtn");
+  if (emailBtn) emailBtn.addEventListener("click", on_button_click);
+
+  // Any other initialization or background fetches
+  getPractices(); // start fetching in background
+});
+</script>
   </body>
 </html>
 
