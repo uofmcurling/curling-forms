@@ -73,6 +73,10 @@
       <div class="form" id="signUp" style="display: none;">
         <h1 class="main_heading">Practice Sign-up</h1>
         <div class="main_content">
+          <label>Which practice are you signing up for?:</label>
+          <select id="selectPractice" style="display: block;">
+            <option value="" selected disabled hidden></option>
+          </select>
           <label for="carpool">What is your transportation situation?:</label>
           <select id="transport" style="display: block;">
             <option value="" selected disabled hidden></option>
@@ -86,8 +90,33 @@
       <div class="form" id="loading" style="display: none;">
         <p style="text-align: center;">Working...</p>
       </div>
-      <div class="form" id="confirmation_box">
-        <div id="confirmation" style="display: none">Success!</div>
+      <div class="form" id="confirmation_box" style="display: none;">
+        <div id="confirmation" style="display: block">Success!</div>
+
+<p>
+  You have been signed up for practice at Four Seasons Curling Club on 
+  <span id="practiceDay"></span>. You will receive a text about carpool information a day or two before this practice.
+</p>
+
+<script>
+  function updatePracticeText() {
+    const practiceSelect = document.getElementById('selectPractice');
+    const practiceDaySpan = document.getElementById('practiceDay');
+
+    // Get the text of the selected option
+    const selectedOption = practiceSelect.options[practiceSelect.selectedIndex];
+    if (selectedOption && !selectedOption.hidden) {
+      practiceDaySpan.textContent = selectedOption.text;
+    }
+  }
+
+  // Update whenever the user chooses a practice
+  document.getElementById('selectPractice').addEventListener('change', updatePracticeText);
+
+  // Optionally, update immediately if the select is already populated
+  updatePracticeText();
+</script>
+
           <script src="index.js"></script>
         </div>
       </div>

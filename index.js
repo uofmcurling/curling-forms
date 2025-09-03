@@ -1,3 +1,76 @@
+function convertToDays(obj) {
+  for (let value of Object.values(obj)) {
+    try {value = new Date(value)
+    } catch{console.Log('invalid date')}}
+}
+
+function dateInfo() {
+  let now = new Date()
+}
+
+async function getPractices() {
+  console.log("Fetching practice dates...");
+  const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
+
+  const formData = new URLSearchParams();
+  formData.append('action', 'get_dates');
+
+  try {
+    const response = await fetch(url, { method: "POST", body: formData });
+    const data = await response.json();
+
+    console.log("Next two practices:", data);
+
+    const nextPractice = data.nextPractice ? new Date(data.nextPractice) : null;
+    const secondNextPractice = data.secondNextPractice ? new Date(data.secondNextPractice) : null;
+
+    return { nextPractice, secondNextPractice };
+  } catch (err) {
+    console.error("Error fetching practices:", err);
+    return { nextPractice: null, secondNextPractice: null };
+  }
+}
+
+async function populatePracticeSelect() {
+  // Fetch the next two practices from the server
+  const { nextPractice, secondNextPractice } = await getPractices();
+
+  const select = document.getElementById("selectPractice");
+
+  // Clear any existing options except the hidden placeholder
+  select.querySelectorAll('option:not([hidden])').forEach(opt => opt.remove());
+
+  // Helper to format date for display without timezone shifting
+  const formatDisplayDate = (dateStr) => {
+    const [year, month, day] = dateStr.split('-');
+    const d = new Date(Number(year), Number(month) - 1, Number(day)); // local time
+    const weekday = d.toLocaleDateString(undefined, { weekday: 'short' });
+    return `${weekday}, ${month}/${day}/${year}`;
+  };
+
+  if (nextPractice) {
+    const nextStr = nextPractice.toISOString().split('T')[0]; // yyyy-mm-dd
+    const option1 = document.createElement("option");
+    option1.value = nextStr;
+    option1.textContent = formatDisplayDate(nextStr);
+    select.appendChild(option1);
+  }
+
+  if (secondNextPractice) {
+    const secondStr = secondNextPractice.toISOString().split('T')[0]; // yyyy-mm-dd
+    const option2 = document.createElement("option");
+    option2.value = secondStr;
+    option2.textContent = formatDisplayDate(secondStr);
+    select.appendChild(option2);
+  }
+}
+
+
+// Example: call this as soon as the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  populatePracticeSelect();
+});
+
 
 function on_button_click() {
     email = document.getElementById("email").value;
@@ -29,6 +102,24 @@ async function sendEmail(email) {
     console.error("Fetch error:", err);
     alert("Network error. Please try again.");
   }
+}
+
+function formatPracticeDay(selectedValue) {
+  // If selectedValue is already in yyyy-mm-dd, just return it
+  if (/^\d{4}-\d{2}-\d{2}$/.test(selectedValue)) return selectedValue;
+
+  // Otherwise, try to parse it as a Date
+  const date = new Date(selectedValue);
+  if (isNaN(date)) {
+    console.error("Invalid date selected:", selectedValue);
+    return null;
+  }
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // 0-indexed
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
 }
 
 function missingData(obj) {
@@ -74,6 +165,7 @@ async function checkEmail(email) {
     } else if (noMissingData(data)) {
       document.getElementById("loading").style.display = "none";
       document.getElementById("signUp").style.display = "block";
+      // populatePracticeSelect();
     } else {
       alert("Something went wrong.")
     }
@@ -83,7 +175,7 @@ async function checkEmail(email) {
   }
 }
 
-async function process() {
+async function process() { //Logs data to a known email
       document.getElementById("loading").style.display = "block";
       document.getElementById("about_you").style.display = "none";
     const first_name = document.getElementById('first_name').value;
@@ -116,6 +208,7 @@ async function process() {
     if (data === "Data entered") {
       document.getElementById("loading").style.display = "none";
       document.getElementById("signUp").style.display = "block";
+      // populatePracticeSelect();
     } else if (data === "email already exists") {
         document.getElementById("confirmation").style.display = "block";
         alert("This email is already registered");
@@ -135,11 +228,14 @@ async function signUp() {
       document.getElementById("signUp").style.display = "none";
     const transport = document.getElementById('transport').value;
     const member_email = document.getElementById('email').value;
+    const practice_day = formatPracticeDay(document.getElementById('selectPractice').value);
     console.log(transport)
     console.log(member_email)
+    console.log(practice_day)
     const formData = new URLSearchParams();
     formData.append('transport', transport);
     formData.append('email', member_email);
+    formData.append('practice_day', practice_day);
     formData.append('action', 'sign_up');
     const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
@@ -150,7 +246,7 @@ async function signUp() {
 
     if (data === "sign up complete") {
       document.getElementById("loading").style.display = "none";
-      document.getElementById("confirmation").style.display = "block";
+      document.getElementById("confirmation_box").style.display = "block";
     } else if (data === "email already exists") {
         document.getElementById("confirmation_box").style.display = "block";
         alert("This email is already registered");
