@@ -234,6 +234,7 @@ async function signUp() {
     const transport = document.getElementById('transport').value;
     const member_email = document.getElementById('email').value;
     const practice_day = formatPracticeDay(document.getElementById('selectPractice').value);
+    const location = document.getElementById('location').value;
     console.log(transport)
     console.log(member_email)
     console.log(practice_day)
@@ -241,6 +242,7 @@ async function signUp() {
     formData.append('transport', transport);
     formData.append('email', member_email);
     formData.append('practice_day', practice_day);
+    formData.append('location', location);
     formData.append('action', 'sign_up');
     const url = "https://script.google.com/macros/s/AKfycbyU-Ui7d7vrLYHk65JNA_hTbikrRJJ_NHPHP-jwwmQehc4MGzVGcVJbSTbYciDyzfdn/exec";
 
