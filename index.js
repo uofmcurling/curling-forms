@@ -140,7 +140,8 @@ function noMissingData(obj) {
   return true; // All values present
 }
 
-function on_continue() {
+function on_continue(event) {
+    event.preventDefault()
     email = document.getElementById("email").value;
     checkEmail(email);
 }
@@ -171,11 +172,15 @@ async function checkEmail(email) {
     }
   } catch (err) {
     console.error("Fetch error:", err);
+    document.getElementById("sign-in").style.display = "block";
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("emailNotFound").style.display = "block";
     // alert("Network error. Please try again.");
   }
 }
 
-async function process() { //Logs data to a known email
+async function process(event) { //Logs data to a known email
+      event.preventDefault()
       document.getElementById("loading").style.display = "block";
       document.getElementById("about_you").style.display = "none";
     const first_name = document.getElementById('first_name').value;
@@ -277,7 +282,32 @@ function handleExistingCredential(response) {
   checkEmail(email);
 }
 
+const phoneNumberInput = document.getElementById('number');
 
+phoneNumberInput.addEventListener('input', (event) => {
+  const input = event.target.value;
+  // Remove all non-digit characters from the input
+  const formattedInput = input.replace(/\D/g, '');
+  
+  // Enforce a maximum length of 10 digits for a US phone number
+  const trimmedInput = formattedInput.substring(0, 10);
+
+  let output = '';
+
+  // Format the trimmed number as (123) 456-7890
+  if (trimmedInput.length > 0) {
+    output = `${trimmedInput.substring(0, 3)}`;
+  }
+  if (trimmedInput.length >= 4) {
+    output += `-${trimmedInput.substring(3, 6)}`;
+  }
+  if (trimmedInput.length >= 7) {
+    output += `-${trimmedInput.substring(6, 10)}`;
+  }
+
+  // Set the formatted value back to the input field
+  event.target.value = output;
+});
 
 
 

@@ -14,13 +14,16 @@
         <img id="banner" src="banner.jpg" alt="banner" />
         <img id="logo" src="logo-modified.png" />
       </div>
-      <div class="form" id="sign-in" style="display: block;">
+      <form class="form" id="sign-in" style="display: block;" onsubmit="on_continue(event)">
         <h1 class="main_heading">Practice Sign-up</h1>
         <div class="main_content" id="main_content">
           <label name="email" id="q1" for="email"
             >Enter your university email:</label
           >
-          <input type="text" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
+          <div id="emailNotFound" style="display: none; font-size: 10pt; color:red">
+            <p>Your email could not be found, check the spelling or <a href="https://uofmcurling.github.io/curling-forms/mailing_list_sign_up.html">join our mailing list</a>.</p>
+          </div>
           <!-- <p id="or">--or--</p> -->
           <!-- Google Sign-In button -->
           <div
@@ -42,9 +45,9 @@
 
           <p id="user-info"></p>
         </div>
-        <button id="submission" onclick="on_continue()">Continue</button>
-              </div>
-      <div class="form" id="about_you" style="display: none">
+        <button type="submit" id="submission">Continue</button>
+      </form>
+      <form class="form" id="about_you" style="display: none" onsubmit="process(event)">
         <h1 class="main_heading">About You</h1>
         <div class="main_content">
           <label for="name">What is your first name?:</label>
@@ -63,13 +66,13 @@
             <option value="5 years">5 years</option>
             <option value="6+ years">6+ years</option>
           </select>
-          <label for="number">What is your phone number?:</label>
-          <input type="text" id="number" name="number" />
-          <label for="number">What is your planned graduation year?(xxxx):</label>
-          <input type="text" id="graduation" name="graduation" />
+          <label for="phoneNumber">What is your phone number?:</label>
+          <input type="tel" id="number" name="number">
+          <label for="graduation">What is your planned graduation year?(xxxx):</label>
+          <input type="text" id="graduation" name="graduation" required pattern="[0-9]{4}" title="Please enter a four-digit year.">
         </div>
-        <button id="submission" onclick="process()">Submit</button>
-      </div>
+        <button type="submit" id="submission">Submit</button>
+      </form>
       <div class="form" id="signUp" style="display: none;">
         <h1 class="main_heading">Practice Sign-up</h1>
         <div class="main_content">

@@ -91,6 +91,15 @@ input[type="text"], select {
     box-sizing: border-box;
 }
 
+input[type="text"],input[type="tel"], select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
 button {
     background-color: #7A0019; /* UMN Maroon */
     color: #FFD200; /* UMN Gold */
